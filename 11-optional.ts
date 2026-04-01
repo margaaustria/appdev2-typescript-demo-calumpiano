@@ -1,37 +1,43 @@
-// Optional Values in parameter
 function generateError(msg?: string) {
-    throw new Error(msg)
+    if (msg) {
+        console.log("Error message:", msg);
+    } else {
+        console.log("No message provided");
+    }
 }
 
-generateError("An error occured") // Automatic Semicolon Insertion pitfall - add ; to explicitly tell that this is a function
-// generateError()
+generateError("An error occurred"); 
+generateError();               
 
 
-(() => {
-    // Optional Values in object properties
-    type User = {
-        name: string;
-        age: number;
-        role?: 'admin' | 'guess'
-    }
+type User = {
+    name: string;
+    age: number;
+    role?: 'admin' | 'guest';
+};
 
-    let user: User = {
-        name: 'Elmer',
-        age: 31
-    }
+const user1: User = {
+    name: "Marga",
+    age: 21
+};
 
-    user.name
-    user.age
-})
+const user2: User = {
+    name: "Park Sunghoon",
+    age: 23,
+    role: 'admin'
+};
 
-// Nullish Coalescing `??` operator 
-let input = ''
-const didProvideInput = input ?? false;
+console.log(user1.name, user1.age, user1.role);
+console.log(user2.name, user2.age, user2.role); 
 
-// try it on browser console log to see results
-// update it `??` to `||`
-// `||` check for falsy not false - falsy = null, undefined, 0, empty string, etc
-// ?? check only if null or undefined
+let input = "";
+const didProvideInput = input ?? "No input provided"; 
+console.log("Input:", didProvideInput);
 
-// Use || when you want to fall back on any falsy value.
-// Use ?? when you only want to fall back on null or undefined.
+let input2: string | null = null;
+const safeInput = input2 ?? "Fallback value";
+console.log("Safe Input:", safeInput);
+
+const falsyInput = "";
+const fallbackWithOr = falsyInput || "Default for any falsy value";
+console.log("Fallback with ||:", fallbackWithOr);
