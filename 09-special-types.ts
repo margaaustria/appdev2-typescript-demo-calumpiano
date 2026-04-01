@@ -1,25 +1,15 @@
-// Special Type - null
-let a: null;
+(() => {
 
-a = null
-// a = "Hi"
+    let nullable: null | string;
+    let undefinable: undefined | string;
 
-let b: null | string
 
-b = null
-b = "Hi"
-// b = 10
+    nullable = null;
+    console.log("nullable:", nullable)
 
-// Special Type - undefined
-let c: undefined;
+    nullable = "Hello World";
+    console.log("nullable:", nullable)
 
-c = undefined
-// c = null
-// c = "Hi"
-
-let d: undefined | string
-
-d = undefined
-d = "Hi"
-// d = null
-// d = 10
+    undefinable = undefined;
+    console.log("undefinable:", undefinable)
+})();
