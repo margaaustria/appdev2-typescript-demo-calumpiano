@@ -1,11 +1,43 @@
 (() => {
-    // Literal Types (Alternative to Enum)
-    let userRole: 'admin' | 'guess' | 'teacher' | 'student' = 'admin'
 
-    userRole = 'guess'
-    // anotherUserRole = 'superadmin'
+  let userRole: 'admin' | 'guest' | 'teacher' | 'student' = 'admin';
 
-    function access(role: 'admin' | 'guess' | 'teacher' | 'student') {
-        // ...
+  userRole = 'guest';  
+
+
+  function access(role: 'admin' | 'guest' | 'teacher' | 'student') {
+    if (role === 'admin') {
+      console.log('Full access');
+    } else {
+      console.log('Limited access');
     }
-})
+  }
+
+  access(userRole);
+})();
+
+
+
+function printMessage(type: 'info' | 'warning' | 'error') {
+  console.log("Message type is:", type);
+}
+
+  printMessage('info'),
+  printMessage('warning'),
+  printMessage('error')
+
+
+
+
+let User: {
+  name: string;
+  role: 'admin' | 'teacher' | 'student';
+};
+
+User = {
+  name: "Marga",
+  role: "teacher"
+};
+
+console.log(User.name);
+console.log(User.role);
